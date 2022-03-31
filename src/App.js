@@ -43,7 +43,7 @@ function App() {
 				element={
 					<>
 					<Web3ReactProvider getLibrary={getLibrary}>
-						<div className="flex space-x-3">
+						<div className="flex space-x-3" >
 							{/* <Web3ReactConnectionComponent />				
 							<VanillaConnectionComponent /> */}
 							<HomePage />

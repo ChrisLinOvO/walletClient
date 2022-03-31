@@ -297,7 +297,10 @@ const HomePage = () => {
 				'textAlign':'center',
 				'position':'relative',
 				'width':'100vw',
-				'padding':'50px 20px'
+				'height':'100vh',
+				'padding':'50px 20px',
+				'background':'#FFE4E1',
+			
 			}}
 		>
 			<h1 style={{
