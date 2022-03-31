@@ -14,7 +14,7 @@ import 'antd/dist/antd.css';
 const G_NETWORK = 'rinkeby' // use rinkeby testnet, 'any', 'http://localhost:7545'
 //const G_NETWORK = 'any';
 
-const BeatDayPage = () => {
+const HomePage = () => {
 	// const navigate = useNavigate(); 
 
 	//connector, library, chainId, account, activate, deactivate
@@ -126,10 +126,11 @@ const BeatDayPage = () => {
 			const randomNumber = Math.floor(Math.random() * 100);
 			const myContract = getContract2(web3reactContext.library, walletUser);
 			const overrides = {
-				gasLimit: 230000,
+				gasLimit: 3000000,
+			
 				value: ethers.BigNumber.from("300000000000000000") // 交易金額:單位使用wei (轉換器:https://eth-converter.com/)
 			};
-			const response = await myContract.mintNicMeta(1, overrides); // 呼叫 智能合約 method
+			const response = await myContract.mintNicMeta("1",overrides); // 呼叫 智能合約 method overrides
 			console.log(response);
 			alert('交易成功!');
 		} catch (ex) {
@@ -143,10 +144,15 @@ const BeatDayPage = () => {
 		try {
 			if(!walletUser)throw new Error("There is no wallet Address!");
 			const myContract = getContract2(web3reactContext.library, walletUser);
-
+			const overrides = {
+				gasLimit: 3000000,
+			
+				value: ethers.BigNumber.from("300000000000000000") // 交易金額:單位使用wei (轉換器:https://eth-converter.com/)
+			};
 			// const response = await myContract.userOwns(); // 呼叫 智能合約 method
 			//const response = myContract.address; // ABI address [OK]
 			const response = await myContract.totalSupply(); // 呼叫 智能合約 method
+			// const response = await myContract.mintNicMeta("1",overrides); // 呼叫 智能合約 method
 			// console.log(response);
 			// console.log(ethers.utils.formatUnits(response)); // 1 = 0.000000000000000001
 			// console.log(ethers.utils.hexValue(response)); // 1 = 0x1
@@ -251,9 +257,9 @@ const BeatDayPage = () => {
 			//console.log(response);
 			sendMessageToCSharp("walletSignMsg", response);
 			//await axios.post('/receiveSignature',{
-			await axios.post('/receiveSignature',{
-				"signature": response
-			});
+			// await axios.post('/receiveSignature',{
+			// 	"signature": response
+			// });
 			setIsSignMsg(true);
 		} catch (error) {
 			console.log("Sign PC Err:",error);
@@ -267,9 +273,9 @@ const BeatDayPage = () => {
 			//console.log(response);
 			sendMessageToCSharp("walletSignMsg", response);
 			// await axios.post('/receiveSignature',{
-			await axios.post('/receiveSignature',{
-				"signature": response
-			});
+			// await axios.post('/receiveSignature',{
+			// 	"signature": response
+			// });
 			setIsSignMsg(true);
 		} catch (error) {
 			console.log("Sign PC Err:",error);
@@ -300,10 +306,10 @@ const BeatDayPage = () => {
 				"marginBottom":'15px'
 			}}
 			>
-				BeatDay錢包登入
+				錢包登入
 			</h1>
 
-			<Button
+			{/* <Button
 				type="primary"
 				danger
 				style={{
@@ -316,7 +322,7 @@ const BeatDayPage = () => {
 					sendMessageToCSharp('closeWebView', 'active'); //- 傳送wallet Address to C#
 				}}
 				shape="circle" icon={<CloseOutlined />}
-			/>
+			/> */}
 
 			<p style={{
 				'fontSize':'15px',
@@ -450,7 +456,7 @@ const BeatDayPage = () => {
 				}
 
 				{/* //---------Mobile版 */}
-				<Button
+				{/* <Button
 					style={{
 						'display':'block',
 						'margin':'0 auto 15px auto',
@@ -461,7 +467,7 @@ const BeatDayPage = () => {
 					onClick={connectWalletConnectSimple}
 				>
 					使用Walletconnect登入(Mobile)
-				</Button>
+				</Button> */}
 
                     {/* <div className="flex space-x-3">
                         <button
@@ -476,4 +482,4 @@ const BeatDayPage = () => {
 		</div>
 	);
 };
-export default BeatDayPage;
+export default HomePage;

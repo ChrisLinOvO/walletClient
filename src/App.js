@@ -2,7 +2,7 @@ import { Web3ReactProvider } from '@web3-react/core';
 import { Web3Provider } from '@ethersproject/providers';
 import VanillaConnectionComponent from './VanillaConnectionComponent';
 import Web3ReactConnectionComponent from './Web3ReactConnectionComponent';
-import BeatDayPage from './beatDayPage';
+import HomePage from './HomePage';
 
 import {
 	BrowserRouter,
@@ -30,7 +30,7 @@ function App() {
 		// 	<div className="flex space-x-3">
 		// 		{/* <Web3ReactConnectionComponent />				
 		// 		<VanillaConnectionComponent /> */}
-		// 		<BeatDayPage />
+		// 		<HomePage />
 		// 	</div>
 		// </Web3ReactProvider>
 
@@ -46,7 +46,7 @@ function App() {
 						<div className="flex space-x-3">
 							{/* <Web3ReactConnectionComponent />				
 							<VanillaConnectionComponent /> */}
-							<BeatDayPage />
+							<HomePage />
 						</div>
 					</Web3ReactProvider>
 					</>
